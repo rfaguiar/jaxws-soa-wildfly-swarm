@@ -16,6 +16,17 @@ public class Livro implements Serializable {
 	private Integer anoDePublicacao;
 	private String resumo;
 	
+	public Livro() {}
+		
+	public Livro(Integer anoDePublicacao, List<String> autores, String editora,
+			String nome, String resumo) {
+		this.anoDePublicacao = anoDePublicacao;
+		this.autores = autores;
+		this.editora = editora;
+		this.nome = nome;
+		this.resumo = resumo;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
