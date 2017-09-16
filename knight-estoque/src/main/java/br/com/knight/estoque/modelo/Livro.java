@@ -3,14 +3,23 @@ package br.com.knight.estoque.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Livro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private String nome;
+	
+	@XmlElementWrapper(name="autores")
+	@XmlElement(name="autor")
 	private List<String> autores;
 	private String editora;
 	private Integer anoDePublicacao;
