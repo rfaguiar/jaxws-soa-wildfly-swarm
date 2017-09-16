@@ -14,7 +14,9 @@ public class Client {
 		ListagemLivro listagemLivro = listagemLivroService.getListagemLivroPort();
 		
 		//Executa o método remoto
-		listagemLivro.listarLivros().forEach(livro -> imprimir(livro));;
+		listagemLivro.listarLivros().forEach(livro -> imprimir(livro));
+		
+		listagemLivro.listarLivrosPaginacao(0, 1).forEach(livro -> imprimir(livro));
 	}
 
 	private static void imprimir(Livro livro) {
