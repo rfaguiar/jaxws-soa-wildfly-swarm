@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import br.com.knight.estoque.modelo.Livro;
 
-public class livroRepositoryImplTest {
+public class LivroRepositoryImplTest {
 
 	private LivroRepository repositorio;
 
