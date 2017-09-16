@@ -8,4 +8,6 @@ public interface LivroRepository {
 
 	List<Livro> listarLivros();
 
+	List<Livro> listarLivros(int numeroDaPagina, int tamanhoDaPagina);
+
 }

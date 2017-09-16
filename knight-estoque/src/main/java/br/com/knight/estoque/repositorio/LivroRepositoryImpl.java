@@ -16,4 +16,17 @@ public class LivroRepositoryImpl implements LivroRepository {
 		return livros;
 	}
 
+	@Override
+	public List<Livro> listarLivros(int numeroDaPagina, int tamanhoDaPagina) {
+		List<Livro> livros = listarLivros();
+		
+		int indiceInicial = numeroDaPagina * tamanhoDaPagina;
+		int indiceFinal = indiceInicial + tamanhoDaPagina;
+		
+		indiceFinal = indiceFinal > livros.size() ? livros.size() : indiceFinal;
+		indiceInicial = indiceInicial > indiceFinal ? indiceFinal : indiceInicial;
+		
+		return livros.subList(indiceInicial, indiceFinal);
+	}
+
 }

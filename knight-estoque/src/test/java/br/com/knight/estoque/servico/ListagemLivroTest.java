@@ -1,4 +1,4 @@
-package br.com.knight.estoque.repositorio;
+package br.com.knight.estoque.servico;
 
 import java.util.List;
 
