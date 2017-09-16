@@ -2,7 +2,11 @@ package br.com.knight.estoque.servico;
 
 import java.util.List;
 
+import javax.jws.WebMethod;
+import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.xml.ws.RequestWrapper;
+import javax.xml.ws.ResponseWrapper;
 
 import br.com.knight.estoque.modelo.Livro;
 import br.com.knight.estoque.repositorio.LivroRepository;
@@ -10,10 +14,30 @@ import br.com.knight.estoque.repositorio.LivroRepositoryImpl;
 
 @WebService
 public class ListagemLivro {
+	
+	private LivroRepository repository;
+	
+	public ListagemLivro() {
+		repository = new LivroRepositoryImpl();
+	}
 
 	public List<Livro> listarLivros() {
-		LivroRepository repository = new LivroRepositoryImpl();
 		return repository.listarLivros();
+	}
+
+	//configuração para usar assinatura metodos java iguais(sobrecarga)
+	//webservice devem obrigatoriamente diferentes
+	//poderia não utilizar sobecarga para simplificar a config
+	@RequestWrapper(
+			className="br.com.knight.estoque.servico.jaxws.ListarLivrosPaginacao",
+			localName="listarLivrosPaginacao")
+	@ResponseWrapper(
+			className="br.com.knight.estoque.servico.jaxws.ListarLivrosPaginacaoResponse",
+			localName="listarLivrosPaginacaoResponse")
+	@WebResult(name="livro")
+	@WebMethod(operationName="listarLivrosPaginacao")
+	public List<Livro> listarLivros(int numeroDaPagina, int tamanhoDaPagina) {
+		return repository.listarLivros(numeroDaPagina, tamanhoDaPagina);
 	}
 
 }
