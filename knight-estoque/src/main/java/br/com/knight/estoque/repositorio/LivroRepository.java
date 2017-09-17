@@ -10,4 +10,6 @@ public interface LivroRepository {
 
 	List<Livro> listarLivros(int numeroDaPagina, int tamanhoDaPagina);
 
+	void criarLivro(Livro livro);
+
 }

@@ -3,6 +3,7 @@ package br.com.knight.estoque.servico;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.ws.RequestWrapper;
@@ -36,7 +37,9 @@ public class ListagemLivro {
 			localName="listarLivrosPaginacaoResponse")
 	@WebResult(name="livro")
 	@WebMethod(operationName="listarLivrosPaginacao")
-	public List<Livro> listarLivros(int numeroDaPagina, int tamanhoDaPagina) {
+	public List<Livro> listarLivros(
+			@WebParam(name="numeroDaPagina") int numeroDaPagina, 
+			@WebParam(name="tamanhoDaPagina") int tamanhoDaPagina) {
 		return repository.listarLivros(numeroDaPagina, tamanhoDaPagina);
 	}
 
