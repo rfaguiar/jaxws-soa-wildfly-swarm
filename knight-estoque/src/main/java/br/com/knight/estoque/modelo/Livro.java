@@ -9,13 +9,14 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import br.com.knight.estoque.adaptador.AdaptadorDate;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-
+@XmlSeeAlso({EBook.class})
 public class Livro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
