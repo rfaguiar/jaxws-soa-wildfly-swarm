@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="data" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="mensagem" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -27,11 +28,38 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "usuarioFaultInfo")
+@XmlType(name = "usuarioFaultInfo", propOrder = {
+    "data"
+})
 public class UsuarioFaultInfo {
 
+    protected Object data;
     @XmlAttribute(name = "mensagem")
     protected String mensagem;
+
+    /**
+     * Gets the value of the data property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Object }
+     *     
+     */
+    public Object getData() {
+        return data;
+    }
+
+    /**
+     * Sets the value of the data property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Object }
+     *     
+     */
+    public void setData(Object value) {
+        this.data = value;
+    }
 
     /**
      * Gets the value of the mensagem property.
