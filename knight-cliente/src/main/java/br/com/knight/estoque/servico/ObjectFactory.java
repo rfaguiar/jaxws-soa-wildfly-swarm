@@ -24,15 +24,9 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _CriarLivro_QNAME = new QName("http://servico.estoque.knight.com.br/", "criarLivro");
-    private final static QName _ListarLivros_QNAME = new QName("http://servico.estoque.knight.com.br/", "listarLivros");
-    private final static QName _ListarLivrosPaginacaoResponse_QNAME = new QName("http://servico.estoque.knight.com.br/", "listarLivrosPaginacaoResponse");
-    private final static QName _Usuario_QNAME = new QName("http://servico.estoque.knight.com.br/", "usuario");
-    private final static QName _ListarLivrosPaginacao_QNAME = new QName("http://servico.estoque.knight.com.br/", "listarLivrosPaginacao");
-    private final static QName _CriarLivroResponse_QNAME = new QName("http://servico.estoque.knight.com.br/", "criarLivroResponse");
-    private final static QName _Livro_QNAME = new QName("http://servico.estoque.knight.com.br/", "livro");
-    private final static QName _ListarLivrosResponse_QNAME = new QName("http://servico.estoque.knight.com.br/", "listarLivrosResponse");
-    private final static QName _SOAPException_QNAME = new QName("http://servico.estoque.knight.com.br/", "SOAPException");
+    private final static QName _ListarAutoresResponse_QNAME = new QName("http://servico.estoque.knight.com.br/", "listarAutoresResponse");
+    private final static QName _ListarAutores_QNAME = new QName("http://servico.estoque.knight.com.br/", "listarAutores");
+    private final static QName _Autor_QNAME = new QName("http://servico.estoque.knight.com.br/", "autor");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: br.com.knight.estoque.servico
@@ -42,172 +36,62 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Livro }
+     * Create an instance of {@link Autor }
      * 
      */
-    public Livro createLivro() {
-        return new Livro();
+    public Autor createAutor() {
+        return new Autor();
     }
 
     /**
-     * Create an instance of {@link UsuarioFaultInfo }
+     * Create an instance of {@link ListarAutoresResponse }
      * 
      */
-    public UsuarioFaultInfo createUsuarioFaultInfo() {
-        return new UsuarioFaultInfo();
+    public ListarAutoresResponse createListarAutoresResponse() {
+        return new ListarAutoresResponse();
     }
 
     /**
-     * Create an instance of {@link CriarLivroResponse }
+     * Create an instance of {@link ListarAutores }
      * 
      */
-    public CriarLivroResponse createCriarLivroResponse() {
-        return new CriarLivroResponse();
+    public ListarAutores createListarAutores() {
+        return new ListarAutores();
     }
 
     /**
-     * Create an instance of {@link ListarLivrosResponse }
+     * Create an instance of {@link Autor.Refs }
      * 
      */
-    public ListarLivrosResponse createListarLivrosResponse() {
-        return new ListarLivrosResponse();
+    public Autor.Refs createAutorRefs() {
+        return new Autor.Refs();
     }
 
     /**
-     * Create an instance of {@link SOAPException }
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListarAutoresResponse }{@code >}}
      * 
      */
-    public SOAPException createSOAPException() {
-        return new SOAPException();
+    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "listarAutoresResponse")
+    public JAXBElement<ListarAutoresResponse> createListarAutoresResponse(ListarAutoresResponse value) {
+        return new JAXBElement<ListarAutoresResponse>(_ListarAutoresResponse_QNAME, ListarAutoresResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link ListarLivros }
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListarAutores }{@code >}}
      * 
      */
-    public ListarLivros createListarLivros() {
-        return new ListarLivros();
+    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "listarAutores")
+    public JAXBElement<ListarAutores> createListarAutores(ListarAutores value) {
+        return new JAXBElement<ListarAutores>(_ListarAutores_QNAME, ListarAutores.class, null, value);
     }
 
     /**
-     * Create an instance of {@link ListarLivrosPaginacaoResponse }
+     * Create an instance of {@link JAXBElement }{@code <}{@link Autor }{@code >}}
      * 
      */
-    public ListarLivrosPaginacaoResponse createListarLivrosPaginacaoResponse() {
-        return new ListarLivrosPaginacaoResponse();
-    }
-
-    /**
-     * Create an instance of {@link Usuario }
-     * 
-     */
-    public Usuario createUsuario() {
-        return new Usuario();
-    }
-
-    /**
-     * Create an instance of {@link CriarLivro }
-     * 
-     */
-    public CriarLivro createCriarLivro() {
-        return new CriarLivro();
-    }
-
-    /**
-     * Create an instance of {@link ListarLivrosPaginacao }
-     * 
-     */
-    public ListarLivrosPaginacao createListarLivrosPaginacao() {
-        return new ListarLivrosPaginacao();
-    }
-
-    /**
-     * Create an instance of {@link Livro.Autores }
-     * 
-     */
-    public Livro.Autores createLivroAutores() {
-        return new Livro.Autores();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CriarLivro }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "criarLivro")
-    public JAXBElement<CriarLivro> createCriarLivro(CriarLivro value) {
-        return new JAXBElement<CriarLivro>(_CriarLivro_QNAME, CriarLivro.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListarLivros }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "listarLivros")
-    public JAXBElement<ListarLivros> createListarLivros(ListarLivros value) {
-        return new JAXBElement<ListarLivros>(_ListarLivros_QNAME, ListarLivros.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListarLivrosPaginacaoResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "listarLivrosPaginacaoResponse")
-    public JAXBElement<ListarLivrosPaginacaoResponse> createListarLivrosPaginacaoResponse(ListarLivrosPaginacaoResponse value) {
-        return new JAXBElement<ListarLivrosPaginacaoResponse>(_ListarLivrosPaginacaoResponse_QNAME, ListarLivrosPaginacaoResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Usuario }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "usuario")
-    public JAXBElement<Usuario> createUsuario(Usuario value) {
-        return new JAXBElement<Usuario>(_Usuario_QNAME, Usuario.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListarLivrosPaginacao }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "listarLivrosPaginacao")
-    public JAXBElement<ListarLivrosPaginacao> createListarLivrosPaginacao(ListarLivrosPaginacao value) {
-        return new JAXBElement<ListarLivrosPaginacao>(_ListarLivrosPaginacao_QNAME, ListarLivrosPaginacao.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CriarLivroResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "criarLivroResponse")
-    public JAXBElement<CriarLivroResponse> createCriarLivroResponse(CriarLivroResponse value) {
-        return new JAXBElement<CriarLivroResponse>(_CriarLivroResponse_QNAME, CriarLivroResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Livro }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "livro")
-    public JAXBElement<Livro> createLivro(Livro value) {
-        return new JAXBElement<Livro>(_Livro_QNAME, Livro.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListarLivrosResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "listarLivrosResponse")
-    public JAXBElement<ListarLivrosResponse> createListarLivrosResponse(ListarLivrosResponse value) {
-        return new JAXBElement<ListarLivrosResponse>(_ListarLivrosResponse_QNAME, ListarLivrosResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SOAPException }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "SOAPException")
-    public JAXBElement<SOAPException> createSOAPException(SOAPException value) {
-        return new JAXBElement<SOAPException>(_SOAPException_QNAME, SOAPException.class, null, value);
+    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "autor")
+    public JAXBElement<Autor> createAutor(Autor value) {
+        return new JAXBElement<Autor>(_Autor_QNAME, Autor.class, null, value);
     }
 
 }

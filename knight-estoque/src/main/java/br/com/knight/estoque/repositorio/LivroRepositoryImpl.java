@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import br.com.knight.estoque.modelo.Autor;
 import br.com.knight.estoque.modelo.Livro;
 
 public class LivroRepositoryImpl implements LivroRepository {
@@ -12,8 +13,8 @@ public class LivroRepositoryImpl implements LivroRepository {
 	
 	public LivroRepositoryImpl() {
 		livros = new ArrayList<Livro>();
-		livros.add(new Livro(2012, new ArrayList<String>(Arrays.asList("Paulo Silveira", "Adriano Almeida")), "Casa do Código", "Guia do Programador", "Vá do \"nunca programei\" ..."));
-		livros.add(new Livro(2012, new ArrayList<String>(Arrays.asList("Vinícius Baggio Fuentes")), "Casa do Código", "Ruby on Rails", "Crie rapidamente aplicações web"));
+		livros.add(new Livro(2012, new ArrayList<Autor>(Arrays.asList(new Autor("Paulo Silveira", null), new Autor("Adriano Almeida", null))), "Casa do Código", "Guia do Programador", "Vá do \"nunca programei\" ..."));
+		livros.add(new Livro(2012, new ArrayList<Autor>(Arrays.asList(new Autor("Vinícius Baggio Fuentes", null))), "Casa do Código", "Ruby on Rails", "Crie rapidamente aplicações web"));
 	}
 
 	@Override

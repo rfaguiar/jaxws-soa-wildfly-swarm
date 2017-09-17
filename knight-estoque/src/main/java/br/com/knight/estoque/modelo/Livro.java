@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import br.com.knight.estoque.adaptador.AdaptadorAutores;
 import br.com.knight.estoque.adaptador.AdaptadorDate;
 
 @XmlRootElement
@@ -25,19 +26,20 @@ public class Livro implements Serializable {
 	
 	@XmlElementWrapper(name="autores")
 	@XmlElement(name="autor")
-	private List<String> autores;
+	@XmlJavaTypeAdapter(value = AdaptadorAutores.class)
+	private List<Autor> autores;
 	private String editora;
 	private Integer anoDePublicacao;
 	private String resumo;
 	
-	@XmlJavaTypeAdapter(AdaptadorDate.class)
+	@XmlJavaTypeAdapter(value = AdaptadorDate.class)
 	private Date dataDeCriacao;
 	
 	public Livro() {
 		dataDeCriacao = new Date();
 	}
 		
-	public Livro(Integer anoDePublicacao, List<String> autores, String editora,
+	public Livro(Integer anoDePublicacao, List<Autor> autores, String editora,
 			String nome, String resumo) {
 		this();
 		this.anoDePublicacao = anoDePublicacao;
@@ -53,10 +55,10 @@ public class Livro implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public List<String> getAutores() {
+	public List<Autor> getAutores() {
 		return autores;
 	}
-	public void setAutores(List<String> autores) {
+	public void setAutores(List<Autor> autores) {
 		this.autores = autores;
 	}
 	public String getEditora() {

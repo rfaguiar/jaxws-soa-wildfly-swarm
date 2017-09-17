@@ -32,8 +32,8 @@ public interface LivroService {
      * @param parameters
      * @return
      *     returns br.com.knight.estoque.servico.CriarLivroResponse
-     * @throws SOAPException_Exception
      * @throws UsuarioNaoAutorizadoException
+     * @throws SOAPException_Exception
      */
     @WebMethod
     @WebResult(name = "criarLivroResponse", targetNamespace = "http://servico.estoque.knight.com.br/", partName = "result")

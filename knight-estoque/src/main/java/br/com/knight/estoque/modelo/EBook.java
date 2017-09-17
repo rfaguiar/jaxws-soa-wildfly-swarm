@@ -15,7 +15,7 @@ public class EBook extends Livro {
 		this.setFormato(FormatoArquivo.PDF);
 	}
 	
-	public EBook(Integer anoDePublicacao, List<String> autores, String editora,
+	public EBook(Integer anoDePublicacao, List<Autor> autores, String editora,
 			String nome, String resumo) {
 		super(anoDePublicacao, autores, editora, nome, resumo);
 		this.setFormato(FormatoArquivo.PDF);		

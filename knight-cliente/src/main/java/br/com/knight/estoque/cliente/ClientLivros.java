@@ -8,7 +8,7 @@ import br.com.knight.estoque.servico.SOAPException_Exception;
 import br.com.knight.estoque.servico.Usuario;
 import br.com.knight.estoque.servico.UsuarioNaoAutorizadoException;
 
-public class Client {
+public class ClientLivros {
 
 	public static void main(String[] args) throws UsuarioNaoAutorizadoException, SOAPException_Exception {
 		//Inicia a fábrica dos proxies
