@@ -32,6 +32,7 @@ public class ObjectFactory {
     private final static QName _CriarLivroResponse_QNAME = new QName("http://servico.estoque.knight.com.br/", "criarLivroResponse");
     private final static QName _Livro_QNAME = new QName("http://servico.estoque.knight.com.br/", "livro");
     private final static QName _ListarLivrosResponse_QNAME = new QName("http://servico.estoque.knight.com.br/", "listarLivrosResponse");
+    private final static QName _SOAPException_QNAME = new QName("http://servico.estoque.knight.com.br/", "SOAPException");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: br.com.knight.estoque.servico
@@ -70,6 +71,14 @@ public class ObjectFactory {
      */
     public ListarLivrosResponse createListarLivrosResponse() {
         return new ListarLivrosResponse();
+    }
+
+    /**
+     * Create an instance of {@link SOAPException }
+     * 
+     */
+    public SOAPException createSOAPException() {
+        return new SOAPException();
     }
 
     /**
@@ -190,6 +199,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "listarLivrosResponse")
     public JAXBElement<ListarLivrosResponse> createListarLivrosResponse(ListarLivrosResponse value) {
         return new JAXBElement<ListarLivrosResponse>(_ListarLivrosResponse_QNAME, ListarLivrosResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SOAPException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "SOAPException")
+    public JAXBElement<SOAPException> createSOAPException(SOAPException value) {
+        return new JAXBElement<SOAPException>(_SOAPException_QNAME, SOAPException.class, null, value);
     }
 
 }

@@ -1,20 +1,21 @@
 package br.com.knight.estoque.cliente;
 
 import br.com.knight.estoque.servico.CriarLivro;
-import br.com.knight.estoque.servico.ListagemLivro;
-import br.com.knight.estoque.servico.ListagemLivroService;
 import br.com.knight.estoque.servico.Livro;
+import br.com.knight.estoque.servico.LivroService;
+import br.com.knight.estoque.servico.LivroServiceService;
+import br.com.knight.estoque.servico.SOAPException_Exception;
 import br.com.knight.estoque.servico.Usuario;
 import br.com.knight.estoque.servico.UsuarioNaoAutorizadoException;
 
 public class Client {
 
-	public static void main(String[] args) throws UsuarioNaoAutorizadoException {
+	public static void main(String[] args) throws UsuarioNaoAutorizadoException, SOAPException_Exception {
 		//Inicia a fábrica dos proxies
-		ListagemLivroService listagemLivroService = new ListagemLivroService();
+		LivroServiceService serviceFactory = new LivroServiceService();
 		
 		//Obtém um proxy
-		ListagemLivro listagemLivro = listagemLivroService.getListagemLivroPort();
+		LivroService service = serviceFactory.getLivroServicePort();
 		
 		Livro novoLivro = new Livro();
 		novoLivro.setNome("Livro Teste2");
@@ -28,17 +29,17 @@ public class Client {
 		//cria novo livro
 		CriarLivro param = new CriarLivro();
 		param.setLivro(novoLivro);
-		listagemLivro.criarLivro(param , usuario);
+		service.criarLivro(param , usuario);
 		
 		//Executa o método remoto
-		listagemLivro.listarLivros().forEach(livro -> imprimir(livro));
+		service.listarLivros().forEach(livro -> imprimir(livro));
 		
-		listagemLivro.listarLivrosPaginacao(0, 1).forEach(livro -> imprimir(livro));
+		service.listarLivrosPaginacao(0, 1).forEach(livro -> imprimir(livro));
 		
 		//testa exceção da ajutenticação incorreta
 		usuario.setLogin("usuarioIncorreto");
 		usuario.setSenha("senhaIncorreta");
-		listagemLivro.criarLivro(param , usuario);
+		service.criarLivro(param , usuario);
 	}
 
 	private static void imprimir(Livro livro) {

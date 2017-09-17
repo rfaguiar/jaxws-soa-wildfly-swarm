@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.xml.soap.SOAPException;
+import javax.xml.ws.soap.SOAPFaultException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,13 +14,13 @@ import org.junit.Test;
 import br.com.knight.estoque.modelo.Livro;
 import br.com.knight.estoque.modelo.Usuario;
 
-public class ListagemLivroTest {
+public class LivroServiceTest {
 
-	private ListagemLivro servico;
+	private LivroService servico;
 
 	@Before
 	public void init(){
-		servico = new ListagemLivro();
+		servico = new LivroService();
 	}
 	
 	@Test
@@ -49,11 +52,11 @@ public class ListagemLivroTest {
 	}
 
 	@Test
-	public void deveCriarUmNovoLivro() throws UsuarioNaoAutorizadoException {
+	public void deveCriarUmNovoLivro() throws UsuarioNaoAutorizadoException, SOAPException {
 		Livro livroTeste = new Livro(2012, 
 					new ArrayList<String>(Arrays.asList(new String[]{"Autor Teste"})), 
 					"Editora Teste", "Livro Teste", "");
-		Usuario usuario = new Usuario("soa", "soa");
+		Usuario usuario = new Usuario("soa", "soa", "soa");
 		servico.criarLivro(livroTeste, usuario);
 		
 		List<Livro> listaLivros = servico.listarLivros();
@@ -68,11 +71,20 @@ public class ListagemLivroTest {
 	}
 	
 	@Test(expected=UsuarioNaoAutorizadoException.class)
-	public void deveLancarExcecaoAoCriarUmNovoLivro() throws UsuarioNaoAutorizadoException {
+	public void deveLancarExcecaoAoCriarUmNovoLivro() throws UsuarioNaoAutorizadoException, SOAPException {
 		Livro livroTeste = new Livro(2012, 
 					new ArrayList<String>(Arrays.asList(new String[]{"Autor Teste"})), 
 					"Editora Teste", "Livro Teste", "");
-		Usuario usuario = new Usuario("usuarioErrado", "senhaErrada");
+		Usuario usuario = new Usuario("soa", "usuarioErrado", "senhaErrada");
+		servico.criarLivro(livroTeste, usuario);
+	}
+	
+	@Test(expected=SOAPFaultException.class)
+	public void deveLancarExcecaoSoapAoCriarUmNovoLivro() throws UsuarioNaoAutorizadoException, SOAPException {
+		Livro livroTeste = new Livro(2012, 
+					new ArrayList<String>(Arrays.asList(new String[]{"Autor Teste"})), 
+					"Editora Teste", "Livro Teste", "");
+		Usuario usuario = new Usuario("faultCode", "usuarioErrado", "senhaErrada");
 		servico.criarLivro(livroTeste, usuario);
 	}
 

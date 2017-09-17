@@ -10,8 +10,8 @@ import javax.xml.ws.WebFault;
  * Generated source version: 2.2
  * 
  */
-@WebFault(name = "UsuarioNaoAutorizadoException", targetNamespace = "http://servico.estoque.knight.com.br/")
-public class UsuarioNaoAutorizadoException_Exception
+@WebFault(name = "SOAPException", targetNamespace = "http://servico.estoque.knight.com.br/")
+public class SOAPException_Exception
     extends Exception
 {
 
@@ -19,14 +19,14 @@ public class UsuarioNaoAutorizadoException_Exception
      * Java type that goes as soapenv:Fault detail element.
      * 
      */
-    private UsuarioNaoAutorizadoException faultInfo;
+    private SOAPException faultInfo;
 
     /**
      * 
      * @param faultInfo
      * @param message
      */
-    public UsuarioNaoAutorizadoException_Exception(String message, UsuarioNaoAutorizadoException faultInfo) {
+    public SOAPException_Exception(String message, SOAPException faultInfo) {
         super(message);
         this.faultInfo = faultInfo;
     }
@@ -37,7 +37,7 @@ public class UsuarioNaoAutorizadoException_Exception
      * @param cause
      * @param message
      */
-    public UsuarioNaoAutorizadoException_Exception(String message, UsuarioNaoAutorizadoException faultInfo, Throwable cause) {
+    public SOAPException_Exception(String message, SOAPException faultInfo, Throwable cause) {
         super(message, cause);
         this.faultInfo = faultInfo;
     }
@@ -45,9 +45,9 @@ public class UsuarioNaoAutorizadoException_Exception
     /**
      * 
      * @return
-     *     returns fault bean: br.com.knight.estoque.servico.UsuarioNaoAutorizadoException
+     *     returns fault bean: br.com.knight.estoque.servico.SOAPException
      */
-    public UsuarioNaoAutorizadoException getFaultInfo() {
+    public SOAPException getFaultInfo() {
         return faultInfo;
     }
 

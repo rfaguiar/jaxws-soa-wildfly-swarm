@@ -9,14 +9,24 @@ public class Usuario  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private String nome;
 	private String login;
 	private String senha;
 	
 	public Usuario(){}
 
-	public Usuario(String login, String senha) {
+	public Usuario(String nome, String login, String senha) {
+		this.nome = nome;
 		this.login = login;
 		this.senha = senha;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getLogin() {
@@ -62,7 +72,7 @@ public class Usuario  implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [login=" + login + ", senha=" + senha + "]";
-	}
+		return "Usuario [nome=" + nome + ", login=" + login + ", senha=" + senha + "]";
+	}	
 	
 }

@@ -18,12 +18,12 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "ListagemLivro", targetNamespace = "http://servico.estoque.knight.com.br/")
+@WebService(name = "LivroService", targetNamespace = "http://servico.estoque.knight.com.br/")
 @XmlSeeAlso({
     br.com.knight.estoque.servico.ObjectFactory.class,
     br.com.knight.estoque.servico.excecoes.ObjectFactory.class
 })
-public interface ListagemLivro {
+public interface LivroService {
 
 
     /**
@@ -33,6 +33,7 @@ public interface ListagemLivro {
      * @return
      *     returns br.com.knight.estoque.servico.CriarLivroResponse
      * @throws UsuarioNaoAutorizadoException
+     * @throws SOAPException_Exception
      */
     @WebMethod
     @WebResult(name = "criarLivroResponse", targetNamespace = "http://servico.estoque.knight.com.br/", partName = "result")
@@ -42,7 +43,7 @@ public interface ListagemLivro {
         CriarLivro parameters,
         @WebParam(name = "usuario", targetNamespace = "http://servico.estoque.knight.com.br/", header = true, partName = "usuario")
         Usuario usuario)
-        throws UsuarioNaoAutorizadoException
+        throws SOAPException_Exception, UsuarioNaoAutorizadoException
     ;
 
     /**
