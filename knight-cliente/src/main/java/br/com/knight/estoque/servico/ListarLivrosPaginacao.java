@@ -16,8 +16,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="numeroDaPagina" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="tamanhoDaPagina" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,44 +28,44 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "listarLivrosPaginacao", propOrder = {
-    "arg0",
-    "arg1"
+    "numeroDaPagina",
+    "tamanhoDaPagina"
 })
 public class ListarLivrosPaginacao {
 
-    protected int arg0;
-    protected int arg1;
+    protected int numeroDaPagina;
+    protected int tamanhoDaPagina;
 
     /**
-     * Gets the value of the arg0 property.
+     * Gets the value of the numeroDaPagina property.
      * 
      */
-    public int getArg0() {
-        return arg0;
+    public int getNumeroDaPagina() {
+        return numeroDaPagina;
     }
 
     /**
-     * Sets the value of the arg0 property.
+     * Sets the value of the numeroDaPagina property.
      * 
      */
-    public void setArg0(int value) {
-        this.arg0 = value;
+    public void setNumeroDaPagina(int value) {
+        this.numeroDaPagina = value;
     }
 
     /**
-     * Gets the value of the arg1 property.
+     * Gets the value of the tamanhoDaPagina property.
      * 
      */
-    public int getArg1() {
-        return arg1;
+    public int getTamanhoDaPagina() {
+        return tamanhoDaPagina;
     }
 
     /**
-     * Sets the value of the arg1 property.
+     * Sets the value of the tamanhoDaPagina property.
      * 
      */
-    public void setArg1(int value) {
-        this.arg1 = value;
+    public void setTamanhoDaPagina(int value) {
+        this.tamanhoDaPagina = value;
     }
 
 }

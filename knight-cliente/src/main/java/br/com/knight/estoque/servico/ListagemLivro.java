@@ -6,6 +6,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
@@ -26,6 +27,25 @@ public interface ListagemLivro {
 
     /**
      * 
+     * @param usuario
+     * @param parameters
+     * @return
+     *     returns br.com.knight.estoque.servico.CriarLivroResponse
+     * @throws UsuarioNaoAutorizadoException_Exception
+     */
+    @WebMethod
+    @WebResult(name = "criarLivroResponse", targetNamespace = "http://servico.estoque.knight.com.br/", partName = "result")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public CriarLivroResponse criarLivro(
+        @WebParam(name = "criarLivro", targetNamespace = "http://servico.estoque.knight.com.br/", partName = "parameters")
+        CriarLivro parameters,
+        @WebParam(name = "usuario", targetNamespace = "http://servico.estoque.knight.com.br/", header = true, partName = "usuario")
+        Usuario usuario)
+        throws UsuarioNaoAutorizadoException_Exception
+    ;
+
+    /**
+     * 
      * @return
      *     returns java.util.List<br.com.knight.estoque.servico.Livro>
      */
@@ -37,8 +57,8 @@ public interface ListagemLivro {
 
     /**
      * 
-     * @param arg1
-     * @param arg0
+     * @param tamanhoDaPagina
+     * @param numeroDaPagina
      * @return
      *     returns java.util.List<br.com.knight.estoque.servico.Livro>
      */
@@ -47,9 +67,9 @@ public interface ListagemLivro {
     @RequestWrapper(localName = "listarLivrosPaginacao", targetNamespace = "http://servico.estoque.knight.com.br/", className = "br.com.knight.estoque.servico.ListarLivrosPaginacao")
     @ResponseWrapper(localName = "listarLivrosPaginacaoResponse", targetNamespace = "http://servico.estoque.knight.com.br/", className = "br.com.knight.estoque.servico.ListarLivrosPaginacaoResponse")
     public List<Livro> listarLivrosPaginacao(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        int arg1);
+        @WebParam(name = "numeroDaPagina", targetNamespace = "")
+        int numeroDaPagina,
+        @WebParam(name = "tamanhoDaPagina", targetNamespace = "")
+        int tamanhoDaPagina);
 
 }

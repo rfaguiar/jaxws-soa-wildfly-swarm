@@ -10,6 +10,7 @@ import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
 import br.com.knight.estoque.modelo.Livro;
+import br.com.knight.estoque.modelo.Usuario;
 import br.com.knight.estoque.repositorio.LivroRepository;
 import br.com.knight.estoque.repositorio.LivroRepositoryImpl;
 
@@ -41,6 +42,20 @@ public class ListagemLivro {
 			@WebParam(name="numeroDaPagina") int numeroDaPagina, 
 			@WebParam(name="tamanhoDaPagina") int tamanhoDaPagina) {
 		return repository.listarLivros(numeroDaPagina, tamanhoDaPagina);
+	}
+
+	public void criarLivro(
+			@WebParam(name="livro") Livro livro, 
+			@WebParam(name="usuario", header=true) Usuario usuario) 
+		throws UsuarioNaoAutorizadoException {
+		
+		if ("soa".equals(usuario.getLogin()) 
+			&& "soa".equals(usuario.getSenha())) {
+			repository.criarLivro(livro);
+		} else {
+			throw new UsuarioNaoAutorizadoException("Não autorizado");
+		}
+		
 	}
 
 }
