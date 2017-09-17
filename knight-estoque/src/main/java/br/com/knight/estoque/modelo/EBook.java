@@ -9,26 +9,29 @@ public class EBook extends Livro {
 
 	private static final long serialVersionUID = 1L;
 
-	private String formato = "PDF;";
+	private FormatoArquivo formato;
 	
-	public EBook(){}
+	public EBook(){
+		this.setFormato(FormatoArquivo.PDF);
+	}
 	
 	public EBook(Integer anoDePublicacao, List<String> autores, String editora,
 			String nome, String resumo) {
 		super(anoDePublicacao, autores, editora, nome, resumo);
+		this.setFormato(FormatoArquivo.PDF);		
 	}
 
-	public String getFormato() {
+	public FormatoArquivo getFormato() {
 		return formato;
 	}
 
-	public void setFormato(String formato) {
+	public void setFormato(FormatoArquivo formato) {
 		this.formato = formato;
 	}
 
 	@Override
 	public String toString() {
-		return "EBook [formato=" + formato + ", getNome()=" + getNome() + ", getAutores()=" + getAutores()
+		return "EBook [formato=" + getFormato() + ", getNome()=" + getNome() + ", getAutores()=" + getAutores()
 				+ ", getEditora()=" + getEditora() + ", getAnoDePublicacao()=" + getAnoDePublicacao() + ", getResumo()="
 				+ getResumo() + ", getDataDeCriacao()=" + getDataDeCriacao() + ", hashCode()=" + hashCode()
 				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + "]";
