@@ -32,7 +32,6 @@ public class ObjectFactory {
     private final static QName _CriarLivroResponse_QNAME = new QName("http://servico.estoque.knight.com.br/", "criarLivroResponse");
     private final static QName _Livro_QNAME = new QName("http://servico.estoque.knight.com.br/", "livro");
     private final static QName _ListarLivrosResponse_QNAME = new QName("http://servico.estoque.knight.com.br/", "listarLivrosResponse");
-    private final static QName _UsuarioNaoAutorizadoException_QNAME = new QName("http://servico.estoque.knight.com.br/", "UsuarioNaoAutorizadoException");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: br.com.knight.estoque.servico
@@ -50,6 +49,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UsuarioFaultInfo }
+     * 
+     */
+    public UsuarioFaultInfo createUsuarioFaultInfo() {
+        return new UsuarioFaultInfo();
+    }
+
+    /**
      * Create an instance of {@link CriarLivroResponse }
      * 
      */
@@ -63,14 +70,6 @@ public class ObjectFactory {
      */
     public ListarLivrosResponse createListarLivrosResponse() {
         return new ListarLivrosResponse();
-    }
-
-    /**
-     * Create an instance of {@link UsuarioNaoAutorizadoException }
-     * 
-     */
-    public UsuarioNaoAutorizadoException createUsuarioNaoAutorizadoException() {
-        return new UsuarioNaoAutorizadoException();
     }
 
     /**
@@ -191,15 +190,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "listarLivrosResponse")
     public JAXBElement<ListarLivrosResponse> createListarLivrosResponse(ListarLivrosResponse value) {
         return new JAXBElement<ListarLivrosResponse>(_ListarLivrosResponse_QNAME, ListarLivrosResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UsuarioNaoAutorizadoException }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://servico.estoque.knight.com.br/", name = "UsuarioNaoAutorizadoException")
-    public JAXBElement<UsuarioNaoAutorizadoException> createUsuarioNaoAutorizadoException(UsuarioNaoAutorizadoException value) {
-        return new JAXBElement<UsuarioNaoAutorizadoException>(_UsuarioNaoAutorizadoException_QNAME, UsuarioNaoAutorizadoException.class, null, value);
     }
 
 }

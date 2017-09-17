@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import br.com.knight.estoque.modelo.Livro;
 import br.com.knight.estoque.modelo.Usuario;
-import br.com.knight.estoque.servico.ListagemLivro;
 
 public class ListagemLivroTest {
 

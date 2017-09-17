@@ -20,7 +20,8 @@ import javax.xml.ws.ResponseWrapper;
  */
 @WebService(name = "ListagemLivro", targetNamespace = "http://servico.estoque.knight.com.br/")
 @XmlSeeAlso({
-    ObjectFactory.class
+    br.com.knight.estoque.servico.ObjectFactory.class,
+    br.com.knight.estoque.servico.excecoes.ObjectFactory.class
 })
 public interface ListagemLivro {
 
@@ -31,7 +32,7 @@ public interface ListagemLivro {
      * @param parameters
      * @return
      *     returns br.com.knight.estoque.servico.CriarLivroResponse
-     * @throws UsuarioNaoAutorizadoException_Exception
+     * @throws UsuarioNaoAutorizadoException
      */
     @WebMethod
     @WebResult(name = "criarLivroResponse", targetNamespace = "http://servico.estoque.knight.com.br/", partName = "result")
@@ -41,7 +42,7 @@ public interface ListagemLivro {
         CriarLivro parameters,
         @WebParam(name = "usuario", targetNamespace = "http://servico.estoque.knight.com.br/", header = true, partName = "usuario")
         Usuario usuario)
-        throws UsuarioNaoAutorizadoException_Exception
+        throws UsuarioNaoAutorizadoException
     ;
 
     /**

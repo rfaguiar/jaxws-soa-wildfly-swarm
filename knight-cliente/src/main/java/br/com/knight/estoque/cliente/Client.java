@@ -1,18 +1,15 @@
 package br.com.knight.estoque.cliente;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import br.com.knight.estoque.servico.CriarLivro;
 import br.com.knight.estoque.servico.ListagemLivro;
 import br.com.knight.estoque.servico.ListagemLivroService;
 import br.com.knight.estoque.servico.Livro;
 import br.com.knight.estoque.servico.Usuario;
-import br.com.knight.estoque.servico.UsuarioNaoAutorizadoException_Exception;
+import br.com.knight.estoque.servico.UsuarioNaoAutorizadoException;
 
 public class Client {
 
-	public static void main(String[] args) throws UsuarioNaoAutorizadoException_Exception {
+	public static void main(String[] args) throws UsuarioNaoAutorizadoException {
 		//Inicia a fábrica dos proxies
 		ListagemLivroService listagemLivroService = new ListagemLivroService();
 		
