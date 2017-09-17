@@ -1,6 +1,7 @@
 package br.com.knight.estoque.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,6 +9,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import br.com.knight.estoque.adaptador.AdaptadorDate;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -25,10 +29,16 @@ public class Livro implements Serializable {
 	private Integer anoDePublicacao;
 	private String resumo;
 	
-	public Livro() {}
+	@XmlJavaTypeAdapter(AdaptadorDate.class)
+	private Date dataDeCriacao;
+	
+	public Livro() {
+		dataDeCriacao = new Date();
+	}
 		
 	public Livro(Integer anoDePublicacao, List<String> autores, String editora,
 			String nome, String resumo) {
+		this();
 		this.anoDePublicacao = anoDePublicacao;
 		this.autores = autores;
 		this.editora = editora;
@@ -66,6 +76,14 @@ public class Livro implements Serializable {
 	public void setResumo(String resumo) {
 		this.resumo = resumo;
 	}
+	public Date getDataDeCriacao() {
+		return dataDeCriacao;
+	}
+
+	public void setDataDeCriacao(Date dataDeCriacao) {
+		this.dataDeCriacao = dataDeCriacao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,11 +107,11 @@ public class Livro implements Serializable {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Livro [nome=" + nome + ", autores=" + autores + ", editora=" + editora + ", anoDePublicacao="
-				+ anoDePublicacao + ", resumo=" + resumo + "]";
+				+ anoDePublicacao + ", resumo=" + resumo + ", dataDeCriacao=" + dataDeCriacao + "]";
 	}
-	
 	
 }

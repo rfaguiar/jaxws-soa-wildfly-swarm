@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="editora" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="anoDePublicacao" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="resumo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="dataDeCriacao" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,7 +48,8 @@ import javax.xml.bind.annotation.XmlType;
     "autores",
     "editora",
     "anoDePublicacao",
-    "resumo"
+    "resumo",
+    "dataDeCriacao"
 })
 public class Livro {
 
@@ -56,6 +58,7 @@ public class Livro {
     protected String editora;
     protected Integer anoDePublicacao;
     protected String resumo;
+    protected Object dataDeCriacao;
 
     /**
      * Gets the value of the nome property.
@@ -175,6 +178,30 @@ public class Livro {
      */
     public void setResumo(String value) {
         this.resumo = value;
+    }
+
+    /**
+     * Gets the value of the dataDeCriacao property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Object }
+     *     
+     */
+    public Object getDataDeCriacao() {
+        return dataDeCriacao;
+    }
+
+    /**
+     * Sets the value of the dataDeCriacao property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Object }
+     *     
+     */
+    public void setDataDeCriacao(Object value) {
+        this.dataDeCriacao = value;
     }
 
 
