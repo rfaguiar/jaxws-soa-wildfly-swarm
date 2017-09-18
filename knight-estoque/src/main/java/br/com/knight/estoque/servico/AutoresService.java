@@ -8,7 +8,7 @@ import br.com.knight.estoque.modelo.Autor;
 import br.com.knight.estoque.repositorio.AutoresRepository;
 import br.com.knight.estoque.repositorio.AutoresRepositoryImpl;
 
-@WebService
+@WebService(name="autores", serviceName="autores")
 public class AutoresService {
 
 	private AutoresRepository repository;

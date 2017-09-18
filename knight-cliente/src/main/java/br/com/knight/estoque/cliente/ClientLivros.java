@@ -2,8 +2,8 @@ package br.com.knight.estoque.cliente;
 
 import br.com.knight.estoque.servico.CriarLivro;
 import br.com.knight.estoque.servico.Livro;
-import br.com.knight.estoque.servico.LivroService;
-import br.com.knight.estoque.servico.LivroServiceService;
+import br.com.knight.estoque.servico.Livros;
+import br.com.knight.estoque.servico.Livros_Service;
 import br.com.knight.estoque.servico.SOAPException_Exception;
 import br.com.knight.estoque.servico.Usuario;
 import br.com.knight.estoque.servico.UsuarioNaoAutorizadoException;
@@ -12,10 +12,10 @@ public class ClientLivros {
 
 	public static void main(String[] args) throws UsuarioNaoAutorizadoException, SOAPException_Exception {
 		//Inicia a fábrica dos proxies
-		LivroServiceService serviceFactory = new LivroServiceService();
+		Livros_Service serviceFactory = new Livros_Service();
 		
 		//Obtém um proxy
-		LivroService service = serviceFactory.getLivroServicePort();
+		Livros service = serviceFactory.getLivrosPort();
 		
 		Livro novoLivro = new Livro();
 		novoLivro.setNome("Livro Teste2");

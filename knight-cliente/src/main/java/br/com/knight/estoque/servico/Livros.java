@@ -18,12 +18,12 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "LivroService", targetNamespace = "http://servico.estoque.knight.com.br/")
+@WebService(name = "livros", targetNamespace = "http://servico.estoque.knight.com.br/")
 @XmlSeeAlso({
     br.com.knight.estoque.servico.ObjectFactory.class,
     br.com.knight.estoque.servico.excecoes.ObjectFactory.class
 })
-public interface LivroService {
+public interface Livros {
 
 
     /**

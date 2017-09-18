@@ -16,11 +16,11 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "AutoresService", targetNamespace = "http://servico.estoque.knight.com.br/")
+@WebService(name = "autores", targetNamespace = "http://servico.estoque.knight.com.br/")
 @XmlSeeAlso({
     ObjectFactory.class
 })
-public interface AutoresService {
+public interface Autores {
 
 
     /**

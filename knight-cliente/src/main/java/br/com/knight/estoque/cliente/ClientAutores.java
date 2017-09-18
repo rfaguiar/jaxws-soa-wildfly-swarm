@@ -1,17 +1,17 @@
 package br.com.knight.estoque.cliente;
 
 import br.com.knight.estoque.servico.Autor;
-import br.com.knight.estoque.servico.AutoresService;
-import br.com.knight.estoque.servico.AutoresServiceService;
+import br.com.knight.estoque.servico.Autores;
+import br.com.knight.estoque.servico.Autores_Service;
 
 public class ClientAutores {
 
 	public static void main(String[] args) {
 		//Inicia a fábrica dos proxies
-		AutoresServiceService serviceFactory = new AutoresServiceService();
+		Autores_Service serviceFactory = new Autores_Service();
 		
 		//Obtém um proxy
-		AutoresService service = serviceFactory.getAutoresServicePort();
+		Autores service = serviceFactory.getAutoresPort();
 		
 		//imprimie autores
 		service.listarAutores().forEach(autor -> imprimir(autor));

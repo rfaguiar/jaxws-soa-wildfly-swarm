@@ -20,7 +20,7 @@ import br.com.knight.estoque.modelo.Usuario;
 import br.com.knight.estoque.repositorio.LivroRepository;
 import br.com.knight.estoque.repositorio.LivroRepositoryImpl;
 
-@WebService
+@WebService(name="livros", serviceName="livros")
 public class LivroService {
 	
 	private LivroRepository repository;
