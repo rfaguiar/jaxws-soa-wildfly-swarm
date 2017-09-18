@@ -2,6 +2,7 @@ package br.com.knight.estoque.servico;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -20,6 +21,7 @@ import br.com.knight.estoque.modelo.Usuario;
 import br.com.knight.estoque.repositorio.LivroRepository;
 import br.com.knight.estoque.repositorio.LivroRepositoryImpl;
 
+@Stateless
 @WebService(name="livros", serviceName="livros")
 public class LivroService {
 	

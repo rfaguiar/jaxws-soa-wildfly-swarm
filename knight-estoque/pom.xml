@@ -60,13 +60,13 @@
 		<version>2.4</version>
 		<classifier>jdk15</classifier>
 	</dependency>
-    <!-- Java EE 7 dependency 
+    <!-- Java EE 7 dependency -->
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
       <version>7.0</version>
       <scope>provided</scope>
-    </dependency> -->
+    </dependency> 
     <!-- https://mvnrepository.com/artifact/junit/junit -->
 	<dependency>
 	    <groupId>junit</groupId>
@@ -81,6 +81,6 @@
 	    <version>1.9.5</version>
 	    <scope>test</scope>
 	</dependency>
-    
+	
   </dependencies>
 </project>
