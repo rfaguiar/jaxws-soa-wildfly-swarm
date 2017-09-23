@@ -1,25 +1,32 @@
 package br.com.knight.estoque.repositorio;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 import br.com.knight.estoque.modelo.Autor;
 
 public class AutoresRepositoryImpl implements AutoresRepository {
 
-	private List<Autor> autores;
+
+	@Inject
+	private EntityManager manager;
 	
-	public AutoresRepositoryImpl() {
-		autores = new ArrayList<Autor>();
-		autores.add(new Autor("Adriano Almeida", new Date()));
-		autores.add(new Autor("Paulo Silveira", new Date()));
-		autores.add(new Autor("Vinicius Baggio", new Date()));
+	public AutoresRepositoryImpl(){}
+	
+	/**
+	 * Construtor usado pelo teste unitario
+	 * 
+	 * @param manager
+	 */
+	public AutoresRepositoryImpl(EntityManager manager) {
+		this.manager = manager;
 	}
 	
 	@Override
 	public List<Autor> listarAutores() {
-		return autores;
+		return manager.createQuery("select a from Autor a", Autor.class).getResultList();
 	}
 
 }

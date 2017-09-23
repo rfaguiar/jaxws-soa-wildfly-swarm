@@ -22,7 +22,7 @@ import br.com.knight.estoque.repositorio.LivroRepository;
 import br.com.knight.estoque.repositorio.LivroRepositoryImpl;
 
 @Stateless
-@WebService(name="livros", serviceName="livros")
+@WebService(name="livros")
 public class LivroService {
 	
 	private LivroRepository repository;

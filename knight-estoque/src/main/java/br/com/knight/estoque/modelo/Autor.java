@@ -9,6 +9,15 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,14 +35,22 @@ import net.sf.json.JSONObject;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
+@Entity
+@Table(name="autor")
 public class Autor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	
 	@XmlElement(name="nome")
 	private String nome;
 	
 	@XmlTransient
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_nascimento")
 	private Date dataNascimento;
 	
 	public Autor() {}
@@ -45,6 +62,7 @@ public class Autor implements Serializable {
 	
 	@XmlElementWrapper(name="refs")
 	@XmlElement(name="ref")
+	@Transient
 	public List<URL> getRefs() throws HttpException, IOException {
 
 	      String autor = URLEncoder.encode(nome, "UTF-8");
@@ -95,11 +113,19 @@ public class Autor implements Serializable {
 		this.dataNascimento = dataNascimento;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -112,19 +138,12 @@ public class Autor implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Autor other = (Autor) obj;
-		if (nome == null) {
-			if (other.nome != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Autor [nome=" + nome + ", dataNascimento=" + dataNascimento + "]";
-	}
-	
-	
+	}	
 
 }
