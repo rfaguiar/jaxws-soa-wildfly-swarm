@@ -4,6 +4,10 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import br.com.knight.estoque.modelo.Autor;
 
+/**
+ * @author rogerio
+ *
+ */
 public class AdaptadorAutores extends XmlAdapter<String, Autor> {
 
 	@Override

@@ -10,6 +10,10 @@ import org.junit.Test;
 import br.com.knight.estoque.modelo.Autor;
 import br.com.knight.estoque.util.JPAHibernateTest;
 
+/**
+ * @author rogerio
+ *
+ */
 public class AutoresRepositoryImplTest extends JPAHibernateTest {
 	
 	private AutoresRepository repository;

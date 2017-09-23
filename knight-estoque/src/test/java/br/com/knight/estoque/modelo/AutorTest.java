@@ -10,6 +10,10 @@ import java.util.List;
 import org.apache.commons.httpclient.HttpException;
 import org.junit.Test;
 
+/**
+ * @author rogerio
+ *
+ */
 public class AutorTest {
 
 	@Test

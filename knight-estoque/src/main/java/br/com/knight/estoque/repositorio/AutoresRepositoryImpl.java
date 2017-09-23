@@ -7,6 +7,11 @@ import javax.persistence.EntityManager;
 
 import br.com.knight.estoque.modelo.Autor;
 
+/**
+ * 
+ * @author rogerio
+ *
+ */
 public class AutoresRepositoryImpl implements AutoresRepository {
 
 

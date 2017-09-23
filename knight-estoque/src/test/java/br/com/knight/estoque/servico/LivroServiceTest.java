@@ -14,14 +14,20 @@ import org.junit.Test;
 import br.com.knight.estoque.modelo.Autor;
 import br.com.knight.estoque.modelo.Livro;
 import br.com.knight.estoque.modelo.Usuario;
+import br.com.knight.estoque.repositorio.LivroRepositoryImpl;
+import br.com.knight.estoque.util.JPAHibernateTest;
 
-public class LivroServiceTest {
+/**
+ * @author rogerio
+ *
+ */
+public class LivroServiceTest extends JPAHibernateTest {
 
 	private LivroService servico;
 
 	@Before
 	public void init(){
-		servico = new LivroService();
+		servico = new LivroService(new LivroRepositoryImpl(em));
 	}
 	
 	@Test
@@ -32,7 +38,7 @@ public class LivroServiceTest {
 
 		Assert.assertEquals(2, listaLivros.size());
 		Assert.assertEquals("Guia do Programador", livro.getNome());
-		Assert.assertEquals("Paulo Silveira", livro.getAutores().get(0).getNome());
+		Assert.assertEquals("Adriano Almeida", livro.getAutores().get(0).getNome());
 		Assert.assertEquals("Casa do Código", livro.getEditora());
 		Assert.assertEquals(2012, livro.getAnoDePublicacao(), 10);
 		Assert.assertEquals("Vá do \"nunca programei\" ...", livro.getResumo());
@@ -46,7 +52,7 @@ public class LivroServiceTest {
 
 		Assert.assertEquals(1, listaLivros.size());
 		Assert.assertEquals("Guia do Programador", livro.getNome());
-		Assert.assertEquals("Paulo Silveira", livro.getAutores().get(0).getNome());
+		Assert.assertEquals("Adriano Almeida", livro.getAutores().get(0).getNome());
 		Assert.assertEquals("Casa do Código", livro.getEditora());
 		Assert.assertEquals(2012, livro.getAnoDePublicacao(), 10);
 		Assert.assertEquals("Vá do \"nunca programei\" ...", livro.getResumo());
@@ -54,6 +60,7 @@ public class LivroServiceTest {
 
 	@Test
 	public void deveCriarUmNovoLivro() throws UsuarioNaoAutorizadoException, SOAPException {
+		em.getTransaction().begin();
 		Livro livroTeste = new Livro(2012, 
 					new ArrayList<Autor>(Arrays.asList(new Autor("Autor Teste", null))), 
 					"Editora Teste", "Livro Teste", "");
@@ -69,6 +76,9 @@ public class LivroServiceTest {
 		Assert.assertEquals(livroTeste.getEditora(), livro.getEditora());
 		Assert.assertEquals(livroTeste.getAnoDePublicacao(), livro.getAnoDePublicacao(), 10);
 		Assert.assertEquals(livroTeste.getResumo(), livro.getResumo());
+		//remove ao final
+		em.remove(livroTeste);
+		em.getTransaction().commit();
 	}
 	
 	@Test(expected=UsuarioNaoAutorizadoException.class)

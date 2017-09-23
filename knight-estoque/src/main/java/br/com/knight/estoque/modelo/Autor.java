@@ -33,6 +33,10 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+/**
+ * @author rogerio
+ *
+ */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @Entity
@@ -52,7 +56,7 @@ public class Autor implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_nascimento")
 	private Date dataNascimento;
-	
+		
 	public Autor() {}
 
 	public Autor(String nome, Date dataNascimento) {
@@ -144,6 +148,11 @@ public class Autor implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Autor [id=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + "]";
+	}
 
 }

@@ -8,6 +8,10 @@ import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+/**
+ * @author rogerio
+ *
+ */
 public class AdaptadorDate extends XmlAdapter<XMLGregorianCalendar, Date> {
 
 	@Override

@@ -4,6 +4,10 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
+/**
+ * @author rogerio
+ *
+ */
 @XmlEnum
 @XmlType(name="formato")
 public enum FormatoArquivo {

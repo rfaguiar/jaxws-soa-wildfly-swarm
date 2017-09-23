@@ -9,6 +9,10 @@ import javax.jws.WebService;
 import br.com.knight.estoque.modelo.Autor;
 import br.com.knight.estoque.repositorio.AutoresRepository;
 
+/**
+ * @author rogerio
+ *
+ */
 @Stateless
 @WebService(name="autores")
 public class AutoresService {
@@ -16,6 +20,9 @@ public class AutoresService {
 	@Inject
 	private AutoresRepository repository;
 	
+	/**
+	 * Construtor Default para uso do CDI
+	 */
 	public AutoresService() {}
 	
 	

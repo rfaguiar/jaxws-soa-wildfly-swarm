@@ -3,6 +3,7 @@ package br.com.knight.estoque.servico;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -19,16 +20,26 @@ import javax.xml.ws.soap.SOAPFaultException;
 import br.com.knight.estoque.modelo.Livro;
 import br.com.knight.estoque.modelo.Usuario;
 import br.com.knight.estoque.repositorio.LivroRepository;
-import br.com.knight.estoque.repositorio.LivroRepositoryImpl;
 
+/**
+ * @author rogerio
+ *
+ */
 @Stateless
 @WebService(name="livros")
 public class LivroService {
 	
+	@Inject
 	private LivroRepository repository;
 	
-	public LivroService() {
-		repository = new LivroRepositoryImpl();
+	public LivroService(){}
+	
+	/**
+	 * construtor usado pelo teste unitario
+	 * @param repository
+	 */
+	public LivroService(LivroRepository repository) {
+		this.repository = repository;
 	}
 
 	public List<Livro> listarLivros() {

@@ -17,14 +17,14 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "livros", targetNamespace = "http://servico.estoque.knight.com.br/", wsdlLocation = "http://localhost:8080/livros?wsdl")
-public class Livros_Service
+@WebServiceClient(name = "LivroServiceService", targetNamespace = "http://servico.estoque.knight.com.br/", wsdlLocation = "http://localhost:8080/livros?wsdl")
+public class LivroServiceService
     extends Service
 {
 
-    private final static URL LIVROS_WSDL_LOCATION;
-    private final static WebServiceException LIVROS_EXCEPTION;
-    private final static QName LIVROS_QNAME = new QName("http://servico.estoque.knight.com.br/", "livros");
+    private final static URL LIVROSERVICESERVICE_WSDL_LOCATION;
+    private final static WebServiceException LIVROSERVICESERVICE_EXCEPTION;
+    private final static QName LIVROSERVICESERVICE_QNAME = new QName("http://servico.estoque.knight.com.br/", "LivroServiceService");
 
     static {
         URL url = null;
@@ -34,31 +34,31 @@ public class Livros_Service
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
-        LIVROS_WSDL_LOCATION = url;
-        LIVROS_EXCEPTION = e;
+        LIVROSERVICESERVICE_WSDL_LOCATION = url;
+        LIVROSERVICESERVICE_EXCEPTION = e;
     }
 
-    public Livros_Service() {
-        super(__getWsdlLocation(), LIVROS_QNAME);
+    public LivroServiceService() {
+        super(__getWsdlLocation(), LIVROSERVICESERVICE_QNAME);
     }
 
-    public Livros_Service(WebServiceFeature... features) {
-        super(__getWsdlLocation(), LIVROS_QNAME, features);
+    public LivroServiceService(WebServiceFeature... features) {
+        super(__getWsdlLocation(), LIVROSERVICESERVICE_QNAME, features);
     }
 
-    public Livros_Service(URL wsdlLocation) {
-        super(wsdlLocation, LIVROS_QNAME);
+    public LivroServiceService(URL wsdlLocation) {
+        super(wsdlLocation, LIVROSERVICESERVICE_QNAME);
     }
 
-    public Livros_Service(URL wsdlLocation, WebServiceFeature... features) {
-        super(wsdlLocation, LIVROS_QNAME, features);
+    public LivroServiceService(URL wsdlLocation, WebServiceFeature... features) {
+        super(wsdlLocation, LIVROSERVICESERVICE_QNAME, features);
     }
 
-    public Livros_Service(URL wsdlLocation, QName serviceName) {
+    public LivroServiceService(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }
 
-    public Livros_Service(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
+    public LivroServiceService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
         super(wsdlLocation, serviceName, features);
     }
 
@@ -85,10 +85,10 @@ public class Livros_Service
     }
 
     private static URL __getWsdlLocation() {
-        if (LIVROS_EXCEPTION!= null) {
-            throw LIVROS_EXCEPTION;
+        if (LIVROSERVICESERVICE_EXCEPTION!= null) {
+            throw LIVROSERVICESERVICE_EXCEPTION;
         }
-        return LIVROS_WSDL_LOCATION;
+        return LIVROSERVICESERVICE_WSDL_LOCATION;
     }
 
 }

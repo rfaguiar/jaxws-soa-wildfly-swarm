@@ -1,43 +1,46 @@
 package br.com.knight.estoque.repositorio;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import br.com.knight.estoque.modelo.Autor;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
 import br.com.knight.estoque.modelo.Livro;
 
+/**
+ * @author rogerio
+ *
+ */
 public class LivroRepositoryImpl implements LivroRepository {
-
-	private List<Livro> livros;
 	
-	public LivroRepositoryImpl() {
-		livros = new ArrayList<Livro>();
-		livros.add(new Livro(2012, new ArrayList<Autor>(Arrays.asList(new Autor("Paulo Silveira", null), new Autor("Adriano Almeida", null))), "Casa do Código", "Guia do Programador", "Vá do \"nunca programei\" ..."));
-		livros.add(new Livro(2012, new ArrayList<Autor>(Arrays.asList(new Autor("Vinícius Baggio Fuentes", null))), "Casa do Código", "Ruby on Rails", "Crie rapidamente aplicações web"));
+	@Inject
+	private EntityManager manager;
+	
+	public LivroRepositoryImpl() {}
+
+	public LivroRepositoryImpl(EntityManager manager) {
+		this.manager = manager;
 	}
 
 	@Override
 	public List<Livro> listarLivros() {	
-		return livros;
+		return manager.createQuery("select l from Livro l", Livro.class).getResultList();
 	}
 
 	@Override
 	public List<Livro> listarLivros(int numeroDaPagina, int tamanhoDaPagina) {
-		List<Livro> livros = listarLivros();
-		
 		int indiceInicial = numeroDaPagina * tamanhoDaPagina;
-		int indiceFinal = indiceInicial + tamanhoDaPagina;
-		
-		indiceFinal = indiceFinal > livros.size() ? livros.size() : indiceFinal;
-		indiceInicial = indiceInicial > indiceFinal ? indiceFinal : indiceInicial;
-		
-		return livros.subList(indiceInicial, indiceFinal);
+		return manager.createQuery("select l from Livro l", Livro.class)
+				.setFirstResult(indiceInicial)
+				.setMaxResults(tamanhoDaPagina)
+				.getResultList();
 	}
 
 	@Override
+	@Transactional
 	public void criarLivro(Livro livro) {
-		livros.add(livro);		
+		manager.persist(livro);
 	}
 
 }

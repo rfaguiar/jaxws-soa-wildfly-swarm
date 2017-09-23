@@ -4,8 +4,12 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * @author rogerio
+ *
+ */
 @XmlRootElement
-public class Usuario  implements Serializable {
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

@@ -17,14 +17,14 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "autores", targetNamespace = "http://servico.estoque.knight.com.br/", wsdlLocation = "http://localhost:8080/autores?wsdl")
-public class Autores_Service
+@WebServiceClient(name = "AutoresServiceService", targetNamespace = "http://servico.estoque.knight.com.br/", wsdlLocation = "http://localhost:8080/autores?wsdl")
+public class AutoresServiceService
     extends Service
 {
 
-    private final static URL AUTORES_WSDL_LOCATION;
-    private final static WebServiceException AUTORES_EXCEPTION;
-    private final static QName AUTORES_QNAME = new QName("http://servico.estoque.knight.com.br/", "autores");
+    private final static URL AUTORESSERVICESERVICE_WSDL_LOCATION;
+    private final static WebServiceException AUTORESSERVICESERVICE_EXCEPTION;
+    private final static QName AUTORESSERVICESERVICE_QNAME = new QName("http://servico.estoque.knight.com.br/", "AutoresServiceService");
 
     static {
         URL url = null;
@@ -34,31 +34,31 @@ public class Autores_Service
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
-        AUTORES_WSDL_LOCATION = url;
-        AUTORES_EXCEPTION = e;
+        AUTORESSERVICESERVICE_WSDL_LOCATION = url;
+        AUTORESSERVICESERVICE_EXCEPTION = e;
     }
 
-    public Autores_Service() {
-        super(__getWsdlLocation(), AUTORES_QNAME);
+    public AutoresServiceService() {
+        super(__getWsdlLocation(), AUTORESSERVICESERVICE_QNAME);
     }
 
-    public Autores_Service(WebServiceFeature... features) {
-        super(__getWsdlLocation(), AUTORES_QNAME, features);
+    public AutoresServiceService(WebServiceFeature... features) {
+        super(__getWsdlLocation(), AUTORESSERVICESERVICE_QNAME, features);
     }
 
-    public Autores_Service(URL wsdlLocation) {
-        super(wsdlLocation, AUTORES_QNAME);
+    public AutoresServiceService(URL wsdlLocation) {
+        super(wsdlLocation, AUTORESSERVICESERVICE_QNAME);
     }
 
-    public Autores_Service(URL wsdlLocation, WebServiceFeature... features) {
-        super(wsdlLocation, AUTORES_QNAME, features);
+    public AutoresServiceService(URL wsdlLocation, WebServiceFeature... features) {
+        super(wsdlLocation, AUTORESSERVICESERVICE_QNAME, features);
     }
 
-    public Autores_Service(URL wsdlLocation, QName serviceName) {
+    public AutoresServiceService(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }
 
-    public Autores_Service(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
+    public AutoresServiceService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
         super(wsdlLocation, serviceName, features);
     }
 
@@ -85,10 +85,10 @@ public class Autores_Service
     }
 
     private static URL __getWsdlLocation() {
-        if (AUTORES_EXCEPTION!= null) {
-            throw AUTORES_EXCEPTION;
+        if (AUTORESSERVICESERVICE_EXCEPTION!= null) {
+            throw AUTORESSERVICESERVICE_EXCEPTION;
         }
-        return AUTORES_WSDL_LOCATION;
+        return AUTORESSERVICESERVICE_WSDL_LOCATION;
     }
 
 }

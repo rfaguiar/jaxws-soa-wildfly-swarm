@@ -10,14 +10,19 @@ import org.junit.Test;
 
 import br.com.knight.estoque.modelo.Autor;
 import br.com.knight.estoque.modelo.Livro;
+import br.com.knight.estoque.util.JPAHibernateTest;
 
-public class LivroRepositoryImplTest {
+/**
+ * @author rogerio
+ *
+ */
+public class LivroRepositoryImplTest extends JPAHibernateTest {
 
 	private LivroRepository repositorio;
 
 	@Before
 	public void init(){
-	  repositorio = new LivroRepositoryImpl();
+	  repositorio = new LivroRepositoryImpl(em);
 	}
 	
 	@Test
@@ -28,7 +33,7 @@ public class LivroRepositoryImplTest {
 
 		Assert.assertEquals(2, listaLivros.size());
 		Assert.assertEquals("Guia do Programador", livro.getNome());
-		Assert.assertEquals("Paulo Silveira", livro.getAutores().get(0).getNome());
+		Assert.assertEquals("Adriano Almeida", livro.getAutores().get(0).getNome());
 		Assert.assertEquals("Casa do Código", livro.getEditora());
 		Assert.assertEquals(2012, livro.getAnoDePublicacao(), 10);
 		Assert.assertEquals("Vá do \"nunca programei\" ...", livro.getResumo());
@@ -42,7 +47,7 @@ public class LivroRepositoryImplTest {
 
 		Assert.assertEquals(1, listaLivros.size());
 		Assert.assertEquals("Guia do Programador", livro.getNome());
-		Assert.assertEquals("Paulo Silveira", livro.getAutores().get(0).getNome());
+		Assert.assertEquals("Adriano Almeida", livro.getAutores().get(0).getNome());
 		Assert.assertEquals("Casa do Código", livro.getEditora());
 		Assert.assertEquals(2012, livro.getAnoDePublicacao(), 10);
 		Assert.assertEquals("Vá do \"nunca programei\" ...", livro.getResumo());
@@ -50,6 +55,7 @@ public class LivroRepositoryImplTest {
 	
 	@Test
 	public void deveCriarUmNovoLivro() {
+		em.getTransaction().begin();
 		Livro livroTeste = new Livro(2012, 
 					new ArrayList<Autor>(Arrays.asList(new Autor("Autor Teste", null))), 
 					"Editora Teste", "Livro Teste", "");		
@@ -57,12 +63,14 @@ public class LivroRepositoryImplTest {
 		
 		List<Livro> listaLivros = repositorio.listarLivros();
 		Livro livro = listaLivros.get(2);
-
 		Assert.assertEquals(3, listaLivros.size());
 		Assert.assertEquals(livroTeste.getNome(), livro.getNome());
 		Assert.assertEquals(livroTeste.getAutores().get(0).getNome(), livro.getAutores().get(0).getNome());
 		Assert.assertEquals(livroTeste.getEditora(), livro.getEditora());
 		Assert.assertEquals(livroTeste.getAnoDePublicacao(), livro.getAnoDePublicacao(), 10);
 		Assert.assertEquals(livroTeste.getResumo(), livro.getResumo());
+		//remove ao final
+		em.remove(livroTeste);
+		em.getTransaction().commit();
 	}
 }

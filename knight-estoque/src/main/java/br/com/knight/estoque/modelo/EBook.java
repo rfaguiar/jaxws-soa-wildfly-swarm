@@ -4,6 +4,10 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * @author rogerio
+ *
+ */
 @XmlRootElement
 public class EBook extends Livro {
 

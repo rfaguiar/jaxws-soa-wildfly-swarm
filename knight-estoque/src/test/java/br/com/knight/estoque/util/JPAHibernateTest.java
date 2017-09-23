@@ -13,23 +13,19 @@ import javax.persistence.Persistence;
 import org.h2.tools.RunScript;
 import org.hibernate.Session;
 import org.hibernate.jdbc.Work;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 
+/**
+ * @author rogerio
+ *
+ */
 public class JPAHibernateTest {
 
 	protected static EntityManagerFactory emf;
     protected static EntityManager em;
 
-    @BeforeClass
-    public static void initStatic() throws FileNotFoundException, SQLException {
+    static {
         emf = Persistence.createEntityManagerFactory("puTest");
         em = emf.createEntityManager();
-    }
-
-    @Before
-    public void initializeDatabase(){
         Session session = em.unwrap(Session.class);
         session.doWork(new Work() {
             @Override
@@ -42,13 +38,5 @@ public class JPAHibernateTest {
                 }
             }
         });
-    }
-    
-
-    @AfterClass
-    public static void tearDown(){
-        em.clear();
-        em.close();
-        emf.close();
     }
 }

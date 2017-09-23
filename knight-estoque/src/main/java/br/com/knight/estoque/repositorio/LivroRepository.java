@@ -4,6 +4,10 @@ import java.util.List;
 
 import br.com.knight.estoque.modelo.Livro;
 
+/**
+ * @author rogerio
+ *
+ */
 public interface LivroRepository {
 
 	List<Livro> listarLivros();
