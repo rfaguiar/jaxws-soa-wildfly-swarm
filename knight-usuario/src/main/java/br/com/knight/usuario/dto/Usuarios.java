@@ -19,6 +19,12 @@ public class Usuarios {
 	
 	@XmlElement(name="usuario")
 	private Collection<Usuario> usuarios;
+	
+	public Usuarios() {}
+
+	public Usuarios(Collection<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 
 	public Collection<Usuario> getUsuarios() {
 		return usuarios;

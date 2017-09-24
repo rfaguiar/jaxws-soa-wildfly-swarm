@@ -22,6 +22,7 @@ public class UsuarioRepositorioImplTest extends JPAHibernateTest {
 	@Test
 	public void devePesquisarTodosUsuarios() throws Exception {		
 		List<Usuario> usuarios = repositorio.todos();
+		assertNotNull(usuarios);
 		Usuario usuario = usuarios.get(0);
 		assertEquals(1, usuario.getId(), 50);
 		assertEquals("Alexandre", usuario.getNome());

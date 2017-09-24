@@ -22,7 +22,7 @@ public class EntityManagerProducer {
 	private EntityManager manager;*/
 	
 
-	@PersistenceUnit
+	@PersistenceUnit(unitName="MyPU")
     private EntityManagerFactory entityManagerFactory;
 
     @Produces
