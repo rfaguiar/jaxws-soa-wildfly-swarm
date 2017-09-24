@@ -6,6 +6,7 @@
     <persistence-unit name="puTest" transaction-type="RESOURCE_LOCAL">
 
         <!-- add classes -->
+        <class>br.com.knight.usuario.modelo.Usuario</class>
 
         <properties>
             <!-- Configuring JDBC properties -->
