@@ -42,6 +42,9 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+	    	<mainClass>br.com.knight.usuario.Boot</mainClass>
+	    </configuration>
       </plugin>
     </plugins>
   </build>
