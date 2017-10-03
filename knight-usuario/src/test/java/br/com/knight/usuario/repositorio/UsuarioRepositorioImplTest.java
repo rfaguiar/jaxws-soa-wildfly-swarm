@@ -29,4 +29,13 @@ public class UsuarioRepositorioImplTest extends JPAHibernateTest {
 		assertEquals("admin", usuario.getLogin());
 		assertEquals("admin", usuario.getSenha());
 	}
+	
+	@Test
+	public void devePesquisarUsuarioPorId() throws Exception {
+		Usuario usuario = repositorio.buscar(new Long(1));
+		assertEquals(1, usuario.getId(), 50);
+		assertEquals("Alexandre", usuario.getNome());
+		assertEquals("admin", usuario.getLogin());
+		assertEquals("admin", usuario.getSenha());
+	}
 }

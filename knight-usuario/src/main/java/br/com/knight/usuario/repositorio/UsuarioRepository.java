@@ -8,4 +8,6 @@ public interface UsuarioRepository {
 
 	List<Usuario> todos();
 
+	Usuario buscar(Long id);
+
 }

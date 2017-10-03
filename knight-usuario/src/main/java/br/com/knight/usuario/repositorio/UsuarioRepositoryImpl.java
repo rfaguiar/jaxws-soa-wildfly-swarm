@@ -44,5 +44,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 		return typedQuery.getResultList();
 	}
 
+	@Override
+	public Usuario buscar(Long id) {
+		return manager.find(Usuario.class, id);
+	}
+
 	
 }
