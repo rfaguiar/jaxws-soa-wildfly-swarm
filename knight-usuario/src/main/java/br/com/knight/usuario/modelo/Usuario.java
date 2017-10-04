@@ -21,7 +21,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nome;
@@ -29,6 +29,19 @@ public class Usuario implements Serializable {
 	private String login;
 	
 	private String senha;
+	
+	public Usuario(){}
+	
+	public Usuario(String nome, String login, String senha) {
+		this(null, nome, login, senha);
+	}
+	
+	public Usuario(Long id, String nome, String login, String senha) {
+		this.id = id;
+		this.nome = nome;
+		this.login = login;
+		login = senha;
+	}
 	
 	public Long getId() {
 		return id;

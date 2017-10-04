@@ -1,6 +1,7 @@
 package br.com.knight.usuario.repositorio;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -37,5 +38,17 @@ public class UsuarioRepositorioImplTest extends JPAHibernateTest {
 		assertEquals("Alexandre", usuario.getNome());
 		assertEquals("admin", usuario.getLogin());
 		assertEquals("admin", usuario.getSenha());
+	}
+
+	@Test
+	public void deveInserirUmNovoUsuario() throws Exception {	
+		em.getTransaction().begin();
+		Usuario usuarioNovo = new Usuario("Teste", "teste", "teste");
+		Usuario usuarioSalvo = repositorio.salvar(usuarioNovo);
+		assertEquals(3, usuarioSalvo.getId(), 50);
+		assertEquals(usuarioNovo.getNome(), usuarioSalvo.getNome());
+		assertEquals(usuarioNovo.getLogin(), usuarioSalvo.getLogin());
+		assertEquals(usuarioNovo.getSenha(), usuarioSalvo.getSenha());
+		em.getTransaction().commit();
 	}
 }

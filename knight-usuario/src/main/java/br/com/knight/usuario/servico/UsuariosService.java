@@ -3,10 +3,15 @@
  */
 package br.com.knight.usuario.servico;
 
+import java.net.URI;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 
 import br.com.knight.usuario.dto.Usuarios;
 import br.com.knight.usuario.modelo.Usuario;
@@ -34,6 +39,15 @@ public class UsuariosService implements UsuariosServiceInterface {
 			return Response.ok(usuario).build();
 		}
 		return Response.status(Status.NOT_FOUND).build();
+	}
+
+	@Override
+	@Transactional
+	public Response create(UriInfo uriInfo, Usuario usuario) {
+		usuario = repository.salvar(usuario);
+		UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
+		URI location = uriBuilder.path("/{id}").build(usuario.getId());
+		return Response.created(location).build();
 	}
 
 }

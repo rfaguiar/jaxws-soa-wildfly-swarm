@@ -49,5 +49,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 		return manager.find(Usuario.class, id);
 	}
 
+	@Override
+	public Usuario salvar(Usuario usuario) {		
+		return manager.merge(usuario);
+	}
+
 	
 }
