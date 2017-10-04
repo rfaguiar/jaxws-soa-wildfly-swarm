@@ -1,7 +1,10 @@
 package br.com.knight.usuario.servico;
 
+import java.util.Date;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -23,7 +26,7 @@ public interface UsuariosServiceInterface {
 	
 	@GET
 	@Path("/{id}")
-	Response find(@PathParam("id") Long id);
+	Response find(@PathParam("id") Long id, @HeaderParam("If-Modified-Since") Date modifiedSince);
 	
 	@POST
 	Response create(@Context UriInfo uriInfo, Usuario usuario);

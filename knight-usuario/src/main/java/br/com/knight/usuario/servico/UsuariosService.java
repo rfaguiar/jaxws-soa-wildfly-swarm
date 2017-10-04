@@ -4,6 +4,7 @@
 package br.com.knight.usuario.servico;
 
 import java.net.URI;
+import java.util.Date;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -33,10 +34,13 @@ public class UsuariosService implements UsuariosServiceInterface {
 	}
 
 	@Override
-	public Response find(Long id) {
+	public Response find(Long id, Date modifiedSince) {
 		Usuario usuario = repository.buscar(id);
 		if (usuario != null) {
-			return Response.ok(usuario).build();
+			if(modifiedSince == null || (modifiedSince != null && usuario.getDataAtualizacao().after(modifiedSince))) {
+				return Response.ok(usuario).build();
+			}
+			return Response.notModified().build();
 		}
 		return Response.status(Status.NOT_FOUND).build();
 	}

@@ -2,12 +2,15 @@ package br.com.knight.usuario.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @author rogerio
@@ -16,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name="usuario")
-public class Usuario implements Serializable {
+public class Usuario extends EntidadeModelo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -30,17 +33,22 @@ public class Usuario implements Serializable {
 	
 	private String senha;
 	
+	@XmlTransient
+	@OneToOne(cascade={CascadeType.ALL}, orphanRemoval=true)
+	private Imagen imagen;
+	
 	public Usuario(){}
 	
 	public Usuario(String nome, String login, String senha) {
-		this(null, nome, login, senha);
+		this(null, nome, login, senha, null);
 	}
 	
-	public Usuario(Long id, String nome, String login, String senha) {
+	public Usuario(Long id, String nome, String login, String senha, Imagen imagen) {
 		this.id = id;
 		this.nome = nome;
 		this.login = login;
-		login = senha;
+		this.login = senha;
+		this.imagen = imagen;
 	}
 	
 	public Long getId() {
@@ -67,6 +75,14 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public Imagen getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(Imagen imagen) {
+		this.imagen = imagen;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -90,8 +106,10 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + "]";
+		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", imagen=" + imagen
+				+ "]";
 	}
 }
