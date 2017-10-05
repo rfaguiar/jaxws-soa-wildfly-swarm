@@ -31,4 +31,9 @@ public interface UsuariosServiceInterface {
 	@POST
 	Response create(@Context UriInfo uriInfo, Usuario usuario);
 
+	@Produces("image/*")
+	@Path("/{id}")
+	@GET
+	public Response recuperarImagen(@PathParam("id") Long id, @HeaderParam("If-Modified-Since") Date modifiedSince);
+	
 }

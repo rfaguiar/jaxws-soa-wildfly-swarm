@@ -4,11 +4,14 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -16,6 +19,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author rogerio
  *
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 @Entity
 @Table(name="usuario")
@@ -33,8 +37,8 @@ public class Usuario extends EntidadeModelo implements Serializable {
 	
 	private String senha;
 	
+	@OneToOne(cascade={CascadeType.ALL}, orphanRemoval=true, fetch=FetchType.LAZY)
 	@XmlTransient
-	@OneToOne(cascade={CascadeType.ALL}, orphanRemoval=true)
 	private Imagen imagen;
 	
 	public Usuario(){}
@@ -75,7 +79,6 @@ public class Usuario extends EntidadeModelo implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 	public Imagen getImagen() {
 		return imagen;
 	}

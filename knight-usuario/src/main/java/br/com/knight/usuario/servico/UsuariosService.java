@@ -5,6 +5,7 @@ package br.com.knight.usuario.servico;
 
 import java.net.URI;
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
 import br.com.knight.usuario.dto.Usuarios;
+import br.com.knight.usuario.modelo.Imagen;
 import br.com.knight.usuario.modelo.Usuario;
 import br.com.knight.usuario.repositorio.UsuarioRepository;
 
@@ -30,7 +32,8 @@ public class UsuariosService implements UsuariosServiceInterface {
 	
 	@Override
 	public Response listarUsuarios() {
-		return Response.ok(new Usuarios(repository.todos())).build();
+		List<Usuario> usuarios = repository.todos();
+		return Response.ok(new Usuarios(usuarios)).build();
 	}
 
 	@Override
@@ -52,6 +55,23 @@ public class UsuariosService implements UsuariosServiceInterface {
 		UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
 		URI location = uriBuilder.path("/{id}").build(usuario.getId());
 		return Response.created(location).build();
+	}
+
+	@Override
+	public Response recuperarImagen(Long id, Date modifiedSince) {
+		Usuario usuario = repository.buscar(id);
+		if (usuario == null) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		Imagen imagen = usuario.getImagen();
+		
+		if (modifiedSince != null && imagen.getDataAtualizacao().before(modifiedSince)) {
+			return Response.notModified().build();
+		}
+		return Response
+				.ok(imagen.getDados(), imagen.getTipo())
+				.header("Descricao", imagen.getDescricao())
+				.build();
 	}
 
 }

@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @Entity
 @Table(name="imagen")
 public class Imagen extends EntidadeModelo implements Serializable {
@@ -19,7 +21,7 @@ public class Imagen extends EntidadeModelo implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Lob
 	private byte[] dados;
 

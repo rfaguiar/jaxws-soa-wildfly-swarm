@@ -9,23 +9,24 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 @MappedSuperclass
 public abstract class EntidadeModelo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@XmlTransient
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_atualizacao")
 	private Date dataAtualizacao;
 
-	@XmlTransient
 	public Date getDataAtualizacao() {
 		return dataAtualizacao;
 	}
 	
-	@XmlTransient
 	public void setDataAtualizacao(Date dataAtualizacao) {
 		this.dataAtualizacao = dataAtualizacao;
 	}

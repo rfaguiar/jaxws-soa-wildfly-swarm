@@ -1,5 +1,6 @@
 package br.com.knight.usuario.dto;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,7 +16,9 @@ import br.com.knight.usuario.modelo.Usuario;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Usuarios {
+public class Usuarios implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	@XmlElement(name="usuario")
 	private Collection<Usuario> usuarios;
