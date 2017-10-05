@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -72,6 +73,19 @@ public class UsuariosService implements UsuariosServiceInterface {
 				.ok(imagen.getDados(), imagen.getTipo())
 				.header("Descricao", imagen.getDescricao())
 				.build();
+	}
+
+	@Override
+	public Response adicionarImagen(String descricao, Long id, HttpServletRequest httpServletRequest,
+			byte[] dadosImagen) {
+		Usuario usuario = repository.buscar(id);
+		if (usuario == null) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		Imagen imagen = new Imagen(dadosImagen, descricao, httpServletRequest.getContentType());
+		usuario.setImagen(imagen);
+		repository.salvar(usuario);
+		return Response.noContent().build();
 	}
 
 }

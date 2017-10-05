@@ -28,6 +28,14 @@ public class Imagen extends EntidadeModelo implements Serializable {
 	private String tipo;
 	private String descricao;
 	
+	public Imagen() {}
+	
+	public Imagen(byte[] dados, String descricao, String tipo) {
+		this.dados = dados;
+		this.descricao = descricao;
+		this.tipo = tipo;
+	}
+	
 	public Long getId() {
 		return id;
 	}

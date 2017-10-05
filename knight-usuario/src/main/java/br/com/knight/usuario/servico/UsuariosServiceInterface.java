@@ -2,10 +2,12 @@ package br.com.knight.usuario.servico;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -21,6 +23,8 @@ import br.com.knight.usuario.modelo.Usuario;
 @Consumes(MediaType.APPLICATION_XML)
 public interface UsuariosServiceInterface {
 
+	public static final String CAMPO_DESCRICAO_IMAGEM = "Descricao";
+	
 	@GET
 	Response listarUsuarios();
 	
@@ -36,4 +40,11 @@ public interface UsuariosServiceInterface {
 	@GET
 	public Response recuperarImagen(@PathParam("id") Long id, @HeaderParam("If-Modified-Since") Date modifiedSince);
 	
+	@Consumes("image/*")
+	@Path("/{id}")
+	@PUT
+	public Response adicionarImagen(@HeaderParam(CAMPO_DESCRICAO_IMAGEM) String descricao,
+			@PathParam("id") Long id,
+			@Context HttpServletRequest httpServletRequest,
+			byte[] dadosImagen);
 }
