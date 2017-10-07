@@ -12,4 +12,7 @@ public interface UsuarioRepository {
 
 	Usuario salvar(Usuario usuario);
 
+	List<Usuario> todos(Integer inicio, Integer tamanhoPagina);
+
+	void remover(Usuario usuario);
 }

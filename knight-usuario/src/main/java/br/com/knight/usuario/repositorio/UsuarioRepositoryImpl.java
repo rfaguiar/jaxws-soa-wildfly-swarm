@@ -54,5 +54,23 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 		return manager.merge(usuario);
 	}
 
+	@Override
+	public List<Usuario> todos(Integer inicio, Integer tamanhoPagina) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<Usuario> query = builder.createQuery(Usuario.class);
+		Root<Usuario> from = query.from(Usuario.class);
+		query.select(from);
+		TypedQuery<Usuario> typedQuery = manager.createQuery(query);
+		return typedQuery
+				.setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina)
+				.getResultList();
+	}
+
+	@Override
+	public void remover(Usuario usuario) {
+		manager.remove(usuario);		
+	}
+
 	
 }

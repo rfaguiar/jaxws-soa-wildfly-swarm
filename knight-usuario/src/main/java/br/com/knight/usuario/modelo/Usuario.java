@@ -1,6 +1,8 @@
 package br.com.knight.usuario.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,10 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
+import br.com.knight.usuario.modelo.rest.Link;
+import br.com.knight.usuario.servico.RESTEntity;
 
 /**
  * @author rogerio
@@ -23,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @Entity
 @Table(name="usuario")
-public class Usuario extends EntidadeModelo implements Serializable {
+public class Usuario extends EntidadeModelo implements Serializable, RESTEntity {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -41,6 +48,10 @@ public class Usuario extends EntidadeModelo implements Serializable {
 	@XmlTransient
 	private Imagen imagen;
 	
+	@XmlElement(name = "link")
+	@Transient
+	private Collection<Link> links;
+	   
 	public Usuario(){}
 	
 	public Usuario(String nome, String login, String senha) {
@@ -85,7 +96,24 @@ public class Usuario extends EntidadeModelo implements Serializable {
 
 	public void setImagen(Imagen imagen) {
 		this.imagen = imagen;
+	}	
+
+	public Collection<Link> getLinks() {
+		return links;
 	}
+
+	public void setLinks(Collection<Link> links) {
+		this.links = links;
+	}
+	
+	@Override
+	   public void adicionarLink(Link link) {
+	      if (links == null) {
+	         links = new ArrayList<>();
+	      }
+	      links.add(link);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -109,10 +137,10 @@ public class Usuario extends EntidadeModelo implements Serializable {
 			return false;
 		return true;
 	}
-
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", imagen=" + imagen
-				+ "]";
+				+ ", links=" + links + "]";
 	}
+
 }

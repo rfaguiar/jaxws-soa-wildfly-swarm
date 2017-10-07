@@ -1,26 +1,17 @@
-package br.com.knight.usuario.dto;
+package br.com.knight.estoque.cliente.restModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import br.com.knight.usuario.modelo.Usuario;
-import br.com.knight.usuario.modelo.rest.Link;
-import br.com.knight.usuario.servico.RESTEntity;
 
 /**
  * @author rogerio
  *
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Usuarios implements Serializable, RESTEntity {
+public class Usuarios implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -54,14 +45,6 @@ public class Usuarios implements Serializable, RESTEntity {
 
 	public void setLinks(Collection<Link> links) {
 		this.links = links;
-	}
-
-	@Override
-	public void adicionarLink(Link link) {
-		if(links == null){
-			this.links = new ArrayList<Link>();
-		}
-		this.links.add(link);
 	}
 
 	@Override
