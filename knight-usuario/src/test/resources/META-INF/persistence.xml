@@ -8,6 +8,7 @@
         <!-- add classes -->
         <class>br.com.knight.usuario.modelo.Usuario</class>
         <class>br.com.knight.usuario.modelo.Imagen</class>
+        <class>br.com.knight.usuario.modelo.Telefone</class>
 
         <properties>
             <!-- Configuring JDBC properties -->

@@ -3,6 +3,7 @@ package br.com.knight.usuario.modelo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -43,6 +45,9 @@ public class Usuario extends EntidadeModelo implements Serializable, RESTEntity 
 	private String login;
 	
 	private String senha;
+
+	@OneToMany(mappedBy = "usuario")
+	private List<Telefone> telefones;
 	
 	@OneToOne(cascade={CascadeType.ALL}, orphanRemoval=true, fetch=FetchType.LAZY)
 	@XmlTransient
